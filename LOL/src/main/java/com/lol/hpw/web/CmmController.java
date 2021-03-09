@@ -22,9 +22,10 @@ public class CmmController {
 	}
 	
 	@RequestMapping("/cmm/searchUser.do")
-	public ModelAndView searchUser(ModelAndView mv, @RequestParam Map<String, Object> param) {
-		Map<String,Object> resultMap = cService.searchUser(param);
+	public ModelAndView searchUser(ModelAndView mv, @RequestParam String userName) {
+		Map<String,Object> resultMap = cService.searchUser(userName);
 		mv.setViewName("/cmm/CMM001");
+		mv.addObject("result", resultMap);
 		return mv;
 	}
 	
