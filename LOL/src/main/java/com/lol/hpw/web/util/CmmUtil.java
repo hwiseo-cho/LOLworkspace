@@ -4,14 +4,16 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.tomcat.util.json.JSONParser;
 
 public class CmmUtil {
 
-	public static Map<String,Object> requestApi(String pathUrl) {
+	public static Map<String,Object> requestApi(String pathUrl, String code) {
 		Map<String,Object> resultMap = new HashMap<String, Object>();
 		try {
 			URL url = new URL(pathUrl);
@@ -33,12 +35,19 @@ public class CmmUtil {
             	System.out.println(line);
             }
             JSONParser parser = new JSONParser(result);
-            Map<String,Object> map = parser.object();
-            resultMap.put("USER_NM", map.get("name"));
-            resultMap.put("USER_LEVEL", map.get("summonerLevel"));
-            resultMap.put("USER_ICON", map.get("profileIconId"));
+            if(code.equals("S")) {
+            	Map<String,Object> map = parser.object();
+            	resultMap.put("USER_NM", map.get("name"));
+            	resultMap.put("USER_LEVEL", map.get("summonerLevel"));
+            	resultMap.put("USER_ICON", map.get("profileIconId"));
+            	resultMap.put("USER_ID", map.get("id"));
+            } else if(code.equals("L")) {
+            	List<Object> list = parser.list();
+            	resultMap.put("leagueList", list);
+            }
             br.close();
             con.disconnect();
+            Thread.sleep(500);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

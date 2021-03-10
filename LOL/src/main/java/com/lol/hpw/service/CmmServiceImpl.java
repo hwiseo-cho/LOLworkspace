@@ -22,10 +22,16 @@ public class CmmServiceImpl implements CmmService {
 
 	@Override
 	public Map<String, Object> searchUser(String userName) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
 		String END_POINT = prop.END_POINT;
 		String KEY = prop.PKEY;
-		String pathUrl = END_POINT + "summoner/v4/summoners/by-name/"+userName+"?api_key="+KEY;
-		Map<String, Object> resultMap = CmmUtil.requestApi(pathUrl);
+		String summonerUrl = END_POINT + "summoner/v4/summoners/by-name/"+userName+"?api_key="+KEY;
+		Map<String, Object> summonerMap = CmmUtil.requestApi(summonerUrl,"S");
+		String leagueUrl = END_POINT + "league/v4/entries/by-summoner/"+String.valueOf(summonerMap.get("USER_ID"))+"?api_key="+KEY;
+		Map<String, Object> rankMap = CmmUtil.requestApi(leagueUrl,"L");
+		
+		resultMap.put("summonerMap",summonerMap);
+		resultMap.put("rankMap",rankMap);
 		
 		return resultMap;
 	}
