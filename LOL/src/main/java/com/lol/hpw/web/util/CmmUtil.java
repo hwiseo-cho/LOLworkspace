@@ -41,10 +41,14 @@ public class CmmUtil {
             	resultMap.put("USER_LEVEL", map.get("summonerLevel"));
             	resultMap.put("USER_ICON", map.get("profileIconId"));
             	resultMap.put("USER_ID", map.get("id"));
+            	resultMap.put("USER_ACCOUNT_ID", map.get("accountId"));
             } else if(code.equals("L")) {
             	List<Object> list = parser.list();
             	resultMap.put("leagueList", list);
-            }
+            } else if(code.equals("M")) {
+            	Map<String,Object> map = parser.object();
+            	resultMap.put("matchList", map);
+            } 
             br.close();
             con.disconnect();
             Thread.sleep(500);

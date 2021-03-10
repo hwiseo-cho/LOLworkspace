@@ -29,9 +29,11 @@ public class CmmServiceImpl implements CmmService {
 		Map<String, Object> summonerMap = CmmUtil.requestApi(summonerUrl,"S");
 		String leagueUrl = END_POINT + "league/v4/entries/by-summoner/"+String.valueOf(summonerMap.get("USER_ID"))+"?api_key="+KEY;
 		Map<String, Object> rankMap = CmmUtil.requestApi(leagueUrl,"L");
-		
+		String matchUrl = END_POINT +"match/v4/matchlists/by-account/"+String.valueOf(summonerMap.get("USER_ACCOUNT_ID"))+"?api_key="+KEY;
+		Map<String, Object> matchMap = CmmUtil.requestApi(matchUrl,"M");
 		resultMap.put("summonerMap",summonerMap);
 		resultMap.put("rankMap",rankMap);
+		resultMap.put("matchMap",matchMap);
 		
 		return resultMap;
 	}

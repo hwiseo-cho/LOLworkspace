@@ -35,7 +35,7 @@
           <h1 class="mb-5"></h1>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form action="/cmm/searchUser.do">
+          <form action="/cmm/goSearchUser.do">
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
                 <input type="text" name="userName" class="form-control form-control-lg" placeholder="이름을 입력하세요">

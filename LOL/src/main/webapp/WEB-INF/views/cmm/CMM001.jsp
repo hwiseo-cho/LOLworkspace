@@ -21,17 +21,46 @@
       <a class="navbar-brand" href="#">LOL</a>
     </div>
   </nav>
+  <div id="content"></div>
+  <div id="loadDiv">
+  	<img id="loadingImg" src="/images/loading.gif" style="display:none;">
+  </div>
 </body>
 <script>
 	$(function(){
-		var result = '${result}';
+		$('#loadingImg').show();
+		
+		var userName = '${userName}';
+		$.ajax({
+			url:"/cmm/searchUser.do",
+			type:"GET",
+			data:{userName:userName},
+			success:function(result){
+				var text = result.summonerMap.USER_NM+'<br>'
+						 + result.summonerMap.USER_LEVEL + '<br>' 
+						 + '<img id="userIcon" src="http://ddragon.leagueoflegends.com/cdn/9.24.2/img/profileicon/'+result.summonerMap.USER_ICON+'.png" style="width:40px; height:40px;">' + '<br>'
+						 + '<img id="userIcon" src="/images/'+result.rankMap.leagueList[0].tier+'.png" style="width:40px; height:40px;">' + '<br>'
+						 ;
+						 
+			$("#content").html(text);
+		//	$('#loadingImg').hide();			 
+			}
+		});
+		
+		
+		
+		var matches = '${result.matchMap.matchList.matches}';
 		var text = '${result.summonerMap.USER_NM}' + '<br>'
 			 	 + '${result.summonerMap.USER_LEVEL}' + '<br>' 
 				 + '<img id="userIcon" src="http://ddragon.leagueoflegends.com/cdn/9.24.2/img/profileicon/${result.summonerMap.USER_ICON}.png" style="width:40px; height:40px;">' + '<br>'
 				 + '<img id="userIcon" src="/images/${result.rankMap.leagueList[0].tier}.png" style="width:40px; height:40px;">' + '<br>'
 				 + '${result.rankMap.leagueList[0].tier}'
-				 + '${result.rankMap.leagueList[0].rank}';
-		$("body").html(text);
+				 + '${result.rankMap.leagueList[0].rank}'
+				 for(var i=0; i<matches.length; i++) {
+					 + matches[i] +'<br>'
+				 }
+				 ;
+		
 	})
 </script>
 </html>
