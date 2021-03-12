@@ -32,7 +32,6 @@
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">
         <h1 class="font-weight-light">Business Name or Tagline</h1>
-        <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
         <a class="btn btn-primary" href="#">Call to Action!</a>
       </div>
       <!-- /.col-md-4 -->
@@ -40,9 +39,8 @@
     <!-- /.row -->
 
     <!-- Call to Action Well -->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
+    <div class="card text-white bg-secondary text-center" style="height: 30px;">
       <div class="card-body">
-        <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
       </div>
     </div>
   </div>
@@ -61,11 +59,12 @@
 					alert(result.error);
 					$('#loadDiv').hide();	
 				}
-				var text = result.summonerMap.USER_NM+'<br>'
-						 + result.summonerMap.USER_LEVEL + '<br>' 
+				var text = 
+						 result.summonerMap.USER_LEVEL + '<br>' 
 						 + '<img id="userIcon" src="/images/'+result.rankMap.leagueList[0].tier+'.png" style="width:40px; height:40px;">' + '<br>'
 						 ;
-				$("#info").append('<img class="img-fluid rounded mb-4 mb-lg-0" src="http://ddragon.leagueoflegends.com/cdn/9.24.2/img/profileicon/'+result.summonerMap.USER_ICON+'" style="width:100px; height:100px;">');
+				$("#info").append('<img class="img-fluid rounded mb-4 mb-lg-0" src="http://ddragon.leagueoflegends.com/cdn/9.24.2/img/profileicon/'+result.summonerMap.USER_ICON+'.png" style="width:100px; height:100px; margin-left: 400px;">');
+				$("#info").append('<p style="float: right; font-size: 30px; margin-right: 30%;">'+result.summonerMap.USER_NM+'</p>');
 				$("#content").append(text);
 				$('#loadDiv').hide();			 
 			},
