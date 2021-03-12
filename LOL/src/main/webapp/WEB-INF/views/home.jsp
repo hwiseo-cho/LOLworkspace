@@ -23,7 +23,7 @@
 	<!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">LOL</a>
+      <a class="navbar-brand" href="/">LOL</a>
     </div>
   </nav>
   <!-- Masthead -->

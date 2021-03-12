@@ -18,7 +18,7 @@
 <body>
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">LOL</a>
+      <a class="navbar-brand" href="/">LOL</a>
     </div>
   </nav>
   <div id="loadDiv" style="text-align: center; z-index: 99; position:fixed; width:100%; height:100%; background-color: black; opacity: 0.3; display:none;">
