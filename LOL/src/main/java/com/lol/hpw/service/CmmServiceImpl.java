@@ -34,6 +34,9 @@ public class CmmServiceImpl implements CmmService {
 		resultMap.put("summonerMap",summonerMap);
 		resultMap.put("rankMap",rankMap);
 		resultMap.put("matchMap",matchMap);
+		if(summonerMap.get("error") != null) {
+			resultMap.put("error", "error");
+		}
 		
 		return resultMap;
 	}

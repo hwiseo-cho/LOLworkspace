@@ -54,6 +54,7 @@ public class CmmUtil {
             Thread.sleep(500);
 		} catch (Exception e) {
 			e.printStackTrace();
+			resultMap.put("error", "error");
 		}
 		return resultMap;
 	}

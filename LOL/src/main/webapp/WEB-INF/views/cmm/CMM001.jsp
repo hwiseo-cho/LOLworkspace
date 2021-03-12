@@ -21,6 +21,9 @@
       <a class="navbar-brand" href="#">LOL</a>
     </div>
   </nav>
+  <div id="loadDiv" style="text-align: center; z-index: 99; position:fixed; width:100%; height:100%; background-color: black; opacity: 0.3; display:none;">
+  	<img id="loadingImg" src="/images/loading.gif" style="z-index: 100; position: absolute; top: 38%; left: 50%; margin-top: -25px; margin-left: -25px;">
+  </div>
   <div id="content">
   	<div class="row align-items-center my-5">
       <div class="col-lg-7" id="info">
@@ -43,13 +46,10 @@
       </div>
     </div>
   </div>
-  <div id="loadDiv" style="text-align: center; margin-top: 18%">
-  	<img id="loadingImg" src="/images/loading.gif" style="display:none;">
-  </div>
 </body>
 <script>
 	$(function(){
-		$('#loadingImg').show();
+		$('#loadDiv').show();
 		
 		var userName = '${userName}';
 		$.ajax({
@@ -57,13 +57,20 @@
 			type:"GET",
 			data:{userName:userName},
 			success:function(result){
+				if(result.error != null) {
+					alert(result.error);
+					$('#loadDiv').hide();	
+				}
 				var text = result.summonerMap.USER_NM+'<br>'
 						 + result.summonerMap.USER_LEVEL + '<br>' 
 						 + '<img id="userIcon" src="/images/'+result.rankMap.leagueList[0].tier+'.png" style="width:40px; height:40px;">' + '<br>'
 						 ;
 				$("#info").append('<img class="img-fluid rounded mb-4 mb-lg-0" src="http://ddragon.leagueoflegends.com/cdn/9.24.2/img/profileicon/'+result.summonerMap.USER_ICON+'" style="width:100px; height:100px;">');
-			$("#content").append(text);
-			$('#loadingImg').hide();			 
+				$("#content").append(text);
+				$('#loadDiv').hide();			 
+			},
+			error:function(){
+				$('#loadDiv').hide();	
 			}
 		});
 		
