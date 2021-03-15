@@ -39,7 +39,7 @@
     <!-- /.row -->
 
     <!-- Call to Action Well -->
-    <div class="card text-white bg-secondary text-center" style="height: 30px;">
+    <div class="card text-white bg-secondary text-center" style="height: 30px;">  
       <div class="card-body">
       </div>
     </div>
