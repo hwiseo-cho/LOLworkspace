@@ -14,6 +14,24 @@
   <!-- Custom styles for this template -->
   <link href="/css/landing-page.min.css" rel="stylesheet">
   <script src="/js/jquery.min.js"></script>
+  <style type="text/css">
+  	div{border:1px solid black;}
+  	
+  	#info{
+  		height:130px;
+  	}
+  	
+  	#info>div{
+  		height:100%;
+  		float: left;
+  	}
+  	
+  	#userIcon{width:50%;}
+  	#userInfo{width:50%;}
+  	#userName{font-size: 30px;}
+  	#userLevel{font-size: 15px;}
+  	
+  </style>
 </head>
 <body>
   <nav class="navbar navbar-light bg-light static-top">
@@ -27,19 +45,27 @@
   <div id="content">
   	<div class="row align-items-center my-5">
       <div class="col-lg-7" id="info">
-        
+      	<div id="userIcon">
+      	  <img alt="" src="#" style="height:100%; width:130px;">
+      	</div>
+      	<div id="userInfo">
+      	  <div id="userName">sfd</div>	
+      	  <div id="userLevel">sfd</div>	
+      	  <div id="tier">sfd</div>	
+      	  <div id="rate">sfd</div>	
+      	</div>
       </div>
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">
-        <h1 class="font-weight-light">Business Name or Tagline</h1>
-        <a class="btn btn-primary" href="#">Call to Action!</a>
+        <h1 class="font-weight-light"></h1>
+        <a class="btn btn-primary" href="#"></a>
       </div>
       <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
 
     <!-- Call to Action Well -->
-    <div class="card text-white bg-secondary text-center" style="height: 30px;">    
+    <div class="card text-white bg-secondary text-center" style="height: 30px; border:1px solid black;">    
       <div class="card-body">
       </div>
     </div>
@@ -59,13 +85,15 @@
 					alert(result.error);
 					$('#loadDiv').hide();	
 				}
+				
 				var text = 
-						 result.summonerMap.USER_LEVEL + '<br>' 
-						 + '<img id="userIcon" src="/images/'+result.rankMap.leagueList[0].tier+'.png" style="width:40px; height:40px;">' + '<br>'
+						 + '<br>' 
+						 + '<img id="userIcon" src="/images/'+result.rankMap.leagueList[0].tier+'.png" style="width:40px; height:40px; float: right; margin-right: 30px;">' + '<br>'
 						 ;
-				$("#info").append('<img class="img-fluid rounded mb-4 mb-lg-0" src="http://ddragon.leagueoflegends.com/cdn/9.24.2/img/profileicon/'+result.summonerMap.USER_ICON+'.png" style="width:100px; height:100px; margin-left: 400px;">');
-				$("#info").append('<p style="float: right; font-size: 30px; margin-right: 30%;">'+result.summonerMap.USER_NM+'</p>');
-				$("#content").append(text);
+				$("#userIcon").append('<img class="img-fluid rounded mb-4 mb-lg-0" src="http://ddragon.leagueoflegends.com/cdn/9.24.2/img/profileicon/'+result.summonerMap.USER_ICON+'.png" style="height:100%; width:130px;">');
+				$("#userName").text(result.summonerMap.USER_NM);
+				$("#userLevel").text(result.summonerMap.USER_LEVEL);
+				
 				$('#loadDiv').hide();			 
 			},
 			error:function(){
@@ -87,6 +115,6 @@
 				 }
 				 ; */
 		
-	})
+	}) 
 </script>
 </html>
