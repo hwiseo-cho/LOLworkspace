@@ -18,7 +18,7 @@ public class CmmController {
 	CmmService cService;
 
 	@RequestMapping("/")
-	public String goHome() {
+	public String goHome() { 
 		return "home";
 	}
 	
@@ -27,7 +27,7 @@ public class CmmController {
 		mv.setViewName("/cmm/CMM001");
 		mv.addObject("userName", userName);
 		return mv;
-	}
+	} 
 	
 	@RequestMapping("/cmm/searchUser.do")
 	@ResponseBody
