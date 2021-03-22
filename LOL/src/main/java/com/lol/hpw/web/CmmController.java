@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lol.hpw.service.CmmService;
 
-@Controller
+@Controller 
 public class CmmController {
 	
 	@Autowired
