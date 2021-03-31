@@ -22,7 +22,7 @@ public class CmmController {
 		return "home";
 	}
 	
-	@RequestMapping("/cmm/goSearchUser.do")
+	@RequestMapping("/cmm/goSearchUser.do") 
 	public ModelAndView goSearchUser(ModelAndView mv, @RequestParam String userName) {
 		mv.setViewName("/cmm/CMM001");
 		mv.addObject("userName", userName);
