@@ -28,7 +28,7 @@ public class CmmController {
 		mv.addObject("userName", userName);
 		return mv;
 	} 
-	
+	 
 	@RequestMapping("/cmm/searchUser.do")
 	@ResponseBody
 	public Map<String,Object> searchUser(ModelAndView mv, @RequestParam String userName) {
